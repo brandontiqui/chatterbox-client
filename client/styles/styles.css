@@ -54,7 +54,7 @@ form {
 
 form input[type=text] {
     margin-right: 10px;
-    width: 70%;
+    width: 90%;
     font-size: 12px;
     padding: 5px;
 }
@@ -86,5 +86,14 @@ form input[type=text] {
 .friend {
     color: #fff;
     background-color: #0090da;
+}
+
+.message{
+    margin: 2px;
+    padding: 5px;
+    min-height: 25px;
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
 }
 
