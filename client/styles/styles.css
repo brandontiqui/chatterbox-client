@@ -97,3 +97,7 @@ form input[type=text] {
     flex-direction: column;
 }
 
+#roomSelect {
+    width: 100px;
+}
+
