@@ -115,14 +115,11 @@ form input[type=text] {
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
 }
-.btn{
-    display: inline !important;
-    width: 100px !important;
-}
 
-#actual-image {
+#profileinfo, #actual-image {
+    overflow: hidden;
     border: none;
-    height: 5vw;
-    width: 5vh;
+    height: 50px;
+    width: 50px;
     float: right;
 }

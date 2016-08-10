@@ -16,7 +16,10 @@
   </head>
   <body>
     <div id="main">
-      <div class='profile-image'><img id='actual-image' src="https://s-media-cache-ak0.pinimg.com/564x/95/80/56/958056f7423e2aee233b27ca3ebe32fa.jpg"></div>
+      <div id='userinfo'></div>
+      <div class='profile-info'>
+        <img id='actual-image' src="https://s-media-cache-ak0.pinimg.com/564x/95/80/56/958056f7423e2aee233b27ca3ebe32fa.jpg">
+      </div>
       <h1 class='lead'>Chatterbox</h1>
       <input id='input' type='field' placeholder="Send Message"></input>
       <input id='send' type="button" value="Submit">
@@ -31,7 +34,8 @@
           Settings <span class='caret'></span>
         </button>
         <ul class="dropdown-menu">
-          <li><input id='profImage' type="field" placeholder="URL for image" aria-describedby="addURL"><span id='addURL'>Add your profile URL</span></li>
+          <li class='input-group'><input id='profImage' type="field" placeholder="URL for image" aria-describedby="addURL"><span class='input-group-addon' id='addURL'>Image URL</span></li>
+          <li class='input-group'><input id='userinput' type="field" placeholder="Enter your username" aria-describedby="addUsername"><span class='input-group-addon' id='addUsername'>Username</span></li>
         </ul>
       </div>
       <!-- Your HTML goes here! -->
