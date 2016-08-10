@@ -99,83 +99,83 @@ app.send = function(message) {
 };
 
 app.fetch = function() {
-  if ($(roomSelect).val().replace(/ /g, '') === 'All') {
-    var stuff = $.ajax({
-    // This is the url you should use to communicate with the parse API server.
-      url: 'https://api.parse.com/1/classes/messages',
-      type: 'GET',
-      // data: 'where={roomname:' + $(roomSelect).val().replace(/ /g, '') + '}',
-      contentType: 'application/json',
-      success: function (data) {
-        data.results.forEach(function(ParseObj) {
-          if (!app.messageStorage.hasOwnProperty(ParseObj.objectId)) {
-            var newMessage = new Message(ParseObj.username, ParseObj.text, ParseObj.roomname);
-            app.messageStorage[ParseObj.objectId] = newMessage;
-            app.queueMessage.push(newMessage);
-            if (!app.rooms.hasOwnProperty(String(ParseObj.roomname).replace(/ /g, ''))) {
-              app.rooms[String(ParseObj.roomname).replace(/ /g, '')] = false;
-              // app.addRoom(ParseObj.roomname.replace(/ /g, ''));
-              var writableRoom = String(ParseObj.roomname);
-              app.addRoom(writableRoom.replace(/ /g, ''));
-            }
-          }
-        });
-        while (app.queueMessage.length > 0) {
-          if (!friendsOnly) {
-            app.addMessage(app.queueMessage.pop());
-          } else {
-            var nextMsg = app.queueMessage.pop();
-            if (app.friendList[nextMsg.username] === true) {
-              app.addMessage(nextMsg);
-            }
+  // if ($(roomSelect).val().replace(/ /g, '') === 'All') {
+  var stuff = $.ajax({
+  // This is the url you should use to communicate with the parse API server.
+    url: 'https://api.parse.com/1/classes/messages',
+    type: 'GET',
+    // data: 'where={roomname:' + $(roomSelect).val().replace(/ /g, '') + '}',
+    contentType: 'application/json',
+    success: function (data) {
+      data.results.forEach(function(ParseObj) {
+        if (!app.messageStorage.hasOwnProperty(ParseObj.objectId)) {
+          var newMessage = new Message(ParseObj.username, ParseObj.text, ParseObj.roomname);
+          app.messageStorage[ParseObj.objectId] = newMessage;
+          app.queueMessage.push(newMessage);
+          if (!app.rooms.hasOwnProperty(String(ParseObj.roomname).replace(/ /g, ''))) {
+            app.rooms[String(ParseObj.roomname).replace(/ /g, '')] = false;
+            // app.addRoom(ParseObj.roomname.replace(/ /g, ''));
+            var writableRoom = String(ParseObj.roomname);
+            app.addRoom(writableRoom.replace(/ /g, ''));
           }
         }
-
-      },
-      error: function (data) {
-        // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
-        console.error('chatterbox: Failed to get message', data);
-      }
-    });
-  } else {
-    var stuff = $.ajax({
-    // This is the url you should use to communicate with the parse API server.
-      url: 'https://api.parse.com/1/classes/messages',
-      type: 'GET',
-      data: 'where={roomname:' + $(roomSelect).val().replace(/ /g, '') + '}',
-      contentType: 'application/json',
-      success: function (data) {
-        data.results.forEach(function(ParseObj) {
-          if (!app.messageStorage.hasOwnProperty(ParseObj.objectId)) {
-            var newMessage = new Message(ParseObj.username, ParseObj.text, ParseObj.roomname);
-            app.messageStorage[ParseObj.objectId] = newMessage;
-            app.queueMessage.push(newMessage);
-            if (!app.rooms.hasOwnProperty(String(ParseObj.roomname).replace(/ /g, ''))) {
-              app.rooms[String(ParseObj.roomname).replace(/ /g, '')] = false;
-              // app.addRoom(ParseObj.roomname.replace(/ /g, ''));
-              var writableRoom = String(ParseObj.roomname);
-              app.addRoom(writableRoom.replace(/ /g, ''));
-            }
-          }
-        });
-        while (app.queueMessage.length > 0) {
-          if (!friendsOnly) {
-            app.addMessage(app.queueMessage.pop());
-          } else {
-            var nextMsg = app.queueMessage.pop();
-            if (app.friendList[nextMsg.username] === true) {
-              app.addMessage(nextMsg);
-            }
+      });
+      while (app.queueMessage.length > 0) {
+        if (!friendsOnly) {
+          app.addMessage(app.queueMessage.pop());
+        } else {
+          var nextMsg = app.queueMessage.pop();
+          if (app.friendList[nextMsg.username] === true) {
+            app.addMessage(nextMsg);
           }
         }
-
-      },
-      error: function (data) {
-        // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
-        console.error('chatterbox: Failed to get message', data);
       }
-    });
-  }
+
+    },
+    error: function (data) {
+      // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
+      console.error('chatterbox: Failed to get message', data);
+    }
+  });
+// } else {
+//   var stuff = $.ajax({
+//   // This is the url you should use to communicate with the parse API server.
+//     url: 'https://api.parse.com/1/classes/messages',
+//     type: 'GET',
+//     data: 'where={roomname:' + $(roomSelect).val().replace(/ /g, '') + '}',
+//     contentType: 'application/json',
+//     success: function (data) {
+//       data.results.forEach(function(ParseObj) {
+//         if (!app.messageStorage.hasOwnProperty(ParseObj.objectId)) {
+//           var newMessage = new Message(ParseObj.username, ParseObj.text, ParseObj.roomname);
+//           app.messageStorage[ParseObj.objectId] = newMessage;
+//           app.queueMessage.push(newMessage);
+//           if (!app.rooms.hasOwnProperty(String(ParseObj.roomname).replace(/ /g, ''))) {
+//             app.rooms[String(ParseObj.roomname).replace(/ /g, '')] = false;
+//             // app.addRoom(ParseObj.roomname.replace(/ /g, ''));
+//             var writableRoom = String(ParseObj.roomname);
+//             app.addRoom(writableRoom.replace(/ /g, ''));
+//           }
+//         }
+//       });
+//       while (app.queueMessage.length > 0) {
+//         if (!friendsOnly) {
+//           app.addMessage(app.queueMessage.pop());
+//         } else {
+//           var nextMsg = app.queueMessage.pop();
+//           if (app.friendList[nextMsg.username] === true) {
+//             app.addMessage(nextMsg);
+//           }
+//         }
+//       }
+
+//     },
+//     error: function (data) {
+//       // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
+//       console.error('chatterbox: Failed to get message', data);
+//     }
+//   });
+// }
 };
 
 app.clearMessages = function() {
