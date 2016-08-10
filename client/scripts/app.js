@@ -66,6 +66,14 @@ app.init = function() {
     app.clearMessages();
     app.fetch();
   });
+
+  $('#profImage').keydown(function(e) {
+    var url = $(this).val();
+    if (e.keyCode === 13 && url) {
+      var $img = $('<img />');
+      $('#actual-image').attr('src', url);
+    }
+  });
 };
 app.send = function(message) {
   $.ajax({
@@ -256,7 +264,7 @@ $(document).ready(function() {
   app.init();
   setInterval(function() {
     app.fetch();
-  }, 2000);
+  }, 3000);
 
 });
 

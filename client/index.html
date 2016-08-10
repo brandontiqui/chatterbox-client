@@ -4,9 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>chatterbox</title>
     <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- dependencies -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- dependencies -->
     <script src="bower_components/underscore/underscore-min.js"></script>
     <script src="bower_components/parse/parse.min.js"></script>
     <!-- your scripts -->
@@ -15,6 +16,7 @@
   </head>
   <body>
     <div id="main">
+      <div class='profile-image'><img id='actual-image' src="https://s-media-cache-ak0.pinimg.com/564x/95/80/56/958056f7423e2aee233b27ca3ebe32fa.jpg"></div>
       <h1 class='lead'>Chatterbox</h1>
       <input id='input' type='field' placeholder="Send Message"></input>
       <input id='send' type="button" value="Submit">
@@ -24,18 +26,13 @@
       </select>
       <ul class="nav nav-tabs">
       </ul>
-      <div class="btn-group">
-        <button class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="button">
-          Settings
+      <div class="btn-group dropdown">
+        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="button">
+          Settings <span class='caret'></span>
         </button>
         <ul class="dropdown-menu">
-          <li>
-            <a class="dropdown-item">action</a>
-          </li>
+          <li><input id='profImage' type="field" placeholder="URL for image" aria-describedby="addURL"><span id='addURL'>Add your profile URL</span></li>
         </ul>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item">action</a>
-        </div>
       </div>
       <!-- Your HTML goes here! -->
     </div>
