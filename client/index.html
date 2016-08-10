@@ -1,10 +1,10 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>chatterbox</title>
     <link rel="stylesheet" href="styles/styles.css">
-
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- dependencies -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/underscore/underscore-min.js"></script>
@@ -15,15 +15,31 @@
   </head>
   <body>
     <div id="main">
-      <h1>chatterbox</h1>
+      <h1 class='lead'>Chatterbox</h1>
       <input id='input' type='field' placeholder="Send Message"></input>
       <input id='send' type="button" value="Submit">
       <input id='room-maker' type='field' placeholder="Make a room"></input>
-      <select id="roomSelect">
+      <select id="roomSelect" >
         <option value='All'>Main Room</option>
       </select>
+      <ul class="nav nav-tabs">
+      </ul>
+      <div class="btn-group">
+        <button class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="button">
+          Settings
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <a class="dropdown-item">action</a>
+          </li>
+        </ul>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item">action</a>
+        </div>
+      </div>
       <!-- Your HTML goes here! -->
     </div>
-    <div id="chats"></div>
+    <div id="chats" class='jumbotron'>
+    </div>
   </body>
 </html>

@@ -5,8 +5,12 @@ body {
     font-family: arial, sans-serif;
 }
 
+button {
+    display: inline;
+}
+
 #main, #chats {
-    width: 500px;
+    width: 650px;
     margin: auto;
     text-align: left;
     background: white;
@@ -86,6 +90,7 @@ form input[type=text] {
 .friend {
     color: #fff;
     background-color: #0090da;
+    font-size: 14px;
 }
 
 .message{
@@ -99,5 +104,19 @@ form input[type=text] {
 
 #roomSelect {
     width: 100px;
+}
+
+.tab {
+    display: inline;
+    padding-left: 5px;
+    border-top: 5px solid blue;
+    border-left: 5px solid blue;
+    border-right: 5px solid blue;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.btn{
+    display: inline !important;
+    width: 100px !important;
 }
 
